@@ -35,7 +35,7 @@ Finally, I prefer to use patterns to avoid unwanted traffic going through the pr
 ## Setup
 
 ### nghttp2
-Install the package available for your platform or use the Docker containers provided here.
+Install the package available for your platform or use the Docker images provided here.
 
 `apt install nghttp2`
 
@@ -66,7 +66,7 @@ I recommend to use the configuration file as many arguments are required and the
 
 The most important settings are `backend` settings. The others are already documented in the full example and in the official documentation. You may have multiple lines for `backend`, one per IP address of your targets.
 
-You don't need to change `frontend` settings if you use Docker containers because the port mapping is done when you start the container.
+You don't need to change `frontend` settings if you use Docker images because the port mapping is done when you start the container.
 
 #### Back-end settings
 Add the original IP address for each targeted domain and subdomain. Wildcard is possible if IP address is the same but be careful for the proper syntax.
@@ -101,7 +101,7 @@ nghttpx -k -f'*,80;no-tls' -f'*,443' -b'52.186.121.82,443;http2only.com:www.http
 Three images are available to make it easy to use the proxy on any platform.
 
 ### Docker Hub
-On [Docker Hub](https://hub.docker.com/r/jehrhart/nghttp2docker). Nothing to build, ready to use. Clone this repo and run this. It is based on the "`package`" image (official nghttp2 package for Ubuntu 20.04).
+On [Docker Hub](https://hub.docker.com/r/jehrhart/nghttp2docker). Nothing to build, ready to use. Clone this repo (or just get `nghttpx.conf`), edit the `backend` setting, update your `hosts` file and run this. It is based on the "`package`" image (official nghttp2 package for Ubuntu 20.04).
 
 `
 docker run --rm --name nghttpx -p 80:8000 -p 443:8001 -v ${PWD}:/nghttpx -it jehrhart/nghttp2docker nghttpx --conf /nghttpx/nghttpx.conf
