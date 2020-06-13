@@ -1,5 +1,5 @@
 # Proxying HTTP/2 only web services with nghttpx
-How-to and docker images to make testing of HTTP/2 only web services easy.
+How-to and Docker images to make testing of HTTP/2 only web services easy.
 
 ## Disclaimer
 This content does not present new techniques or tools. It is inspired from other articles published a long time ago. Its purpose is to provide a quick setup to go on with this very special situation without much trouble.
@@ -12,9 +12,9 @@ I did not find any site that would accept only HTTP/2 in top 50k, but people sta
 In these cases, it could be annoying for pentesters who need to intercept the traffic or use tools that are not able to use HTTP/2, without any option to downgrade to HTTP/1.x
 
 ## Use case
-Let's say you want to inspect traffic between the browser and a website called http2only.com. It works fine in any modern browser but as soon as you want to intercept the traffic using Burp, OWASP Zap or Fiddler, the connection cannot be established.
+Let's say you want to inspect traffic between the browser and a website called `http2only.com`. It works fine in any modern browser but as soon as you want to intercept the traffic using Burp, OWASP Zap or Fiddler, the connection cannot be established.
 
-So it's 2020 and HTTP/2 is on Burp's roadmap but still, you need to play with http2only.com right now, with all of your favorite attack & fuzzing tools.
+So it's 2020 and HTTP/2 is on Burp's roadmap but still, you need to play with `http2only.com` right now, with all of your favorite attack & fuzzing tools.
 
 ## nghttpx
 
@@ -95,8 +95,8 @@ A basic equivalent of the provided configuration file.
 nghttpx -k -f'*,80;no-tls' -f'*,443' -b'52.186.121.82,443;http2only.com:www.http2only.com;proto=h2;tls;upgrade-scheme' -b'127.0.0.1,1337' --no-ocsp host.key host.crt --workers=5 --no-via --no-server-rewrite --no-location-rewrite --no-add-x-forwarded-proto --no-strip-incoming-x-forwarded-proto -L INFO
 `
 
-## Docker containers
-Three containers are available to make it easy to use the proxy on any platform.
+## Docker images
+Three images are available to make it easy to use the proxy on any platform.
 
 ### Docker Hub
 On [Docker Hub](https://hub.docker.com/r/jehrhart/nghttp2docker). Nothing to build, ready to use. Clone this repo and run this. It is based on the "`package`" image (official nghttp2 package for Ubuntu 20.04).
