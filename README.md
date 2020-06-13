@@ -32,14 +32,14 @@ Moreover, I don't recommend accessing the website using the IP address of the pr
 
 Finally, I prefer to use patterns to avoid unwanted traffic going through the proxy hitting the targeted server. It may happen if you use the proxy locally. Tools on your workstation could leak information to the target.
 
-### General setup
+## Setup
 
-#### nghttp2
+### nghttp2
 Install the package available for your platform or use the Docker containers provided here.
 
 `apt install nghttp2`
 
-#### Host redirection
+### Host redirection
 We will consider that you will run the proxy locally on your workstation.
 
 Add entries to your `hosts` [file](https://en.wikipedia.org/wiki/Hosts_(file)) to redirect the domains and subdomains to `127.0.0.1`.
@@ -49,10 +49,10 @@ Add entries to your `hosts` [file](https://en.wikipedia.org/wiki/Hosts_(file)) t
 127.0.0.1 www.http2only.com
 ```
 
-#### Available ports (if proxy is used locally)
+### Available ports (if proxy is used locally)
 Make sure that ports 80 and 443 are not already used by other processes.
 
-#### Get a TLS certificate ready
+### Get a TLS certificate ready
 If you don't use the provided Docker containers, you will have to generate a TLS certificate yourself.
 
 `
@@ -80,6 +80,8 @@ backend=52.186.121.82,443;http2only.com:www.http2only.com;proto=h2;tls;upgrade-s
 # *example.com alone will not match https://www1.example.com
 backend=45.12.103.91,443;example.com:*.example.com;proto=h2;tls;upgrade-scheme
 ```
+
+## Run
 
 ### Command line
 
