@@ -53,7 +53,7 @@ Add entries to your `hosts` [file](https://en.wikipedia.org/wiki/Hosts_(file)) t
 Make sure that ports 80 and 443 are not already used by other processes.
 
 ### Get a TLS certificate ready
-If you don't use the provided Docker containers, you will have to generate a TLS certificate yourself.
+If you **don't** use the provided Docker containers, you will have to generate a TLS certificate yourself.
 
 `
 openssl req -new -newkey rsa:4096 -days 365 -nodes -x509 \
