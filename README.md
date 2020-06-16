@@ -28,7 +28,7 @@ We want to be the most transparent possible during the traffic interception. All
 
 This configuration will allow you to browse a HTTP/2 website (with mandatory TLS) as a HTTP/1.1 one, even without TLS. I don't recommend to use a different scheme however. You will break basic features like session cookies with `secure` tag.
 
-Moreover, I don't recommend accessing the website using the IP address of the proxy directly. If the website relies on virtual hosts, or if URLs are hardcoded somewhere, it will break somewhere. Use the `hosts` configuration, as describe below. 
+Moreover, I don't recommend accessing the website using the IP address of the proxy directly. If the website relies on virtual hosts, or if URLs are hardcoded somewhere, it will break at some point. Use the `hosts` configuration, as describe below. 
 
 Finally, I prefer to use patterns to avoid unwanted traffic going through the proxy hitting the targeted server. It may happen if you use the proxy locally. Tools on your workstation could leak information to the target.
 
@@ -42,12 +42,14 @@ Install the package available for your platform or use the Docker images provide
 ### Host redirection
 We will consider that you will run the proxy locally on your workstation.
 
-Add entries to your `hosts` [file](https://en.wikipedia.org/wiki/Hosts_(file)) to redirect the domains and subdomains to `127.0.0.1`.
+Add entries to your `hosts` [file](https://en.wikipedia.org/wiki/Hosts_(file)) to redirect the domains and subdomains to `127.0.0.1`. 
 
 ```
 127.0.0.1 http2only.com
 127.0.0.1 www.http2only.com
 ```
+
+If you use DNS over HTTPS (DoH), make sure that DoH is not enabled or that exceptions are added in the browser or at OS level. 
 
 ### Available ports (if proxy is used locally)
 Make sure that ports 80 and 443 are not already used by other processes.
