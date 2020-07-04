@@ -12,9 +12,9 @@ I did not find any site that would accept only HTTP/2 in top 50k, but people sta
 In these cases, it could be annoying for pentesters who need to intercept the traffic or use tools that are not able to use HTTP/2, without any option to downgrade to HTTP/1.x
 
 ## Use case
-Let's say you want to inspect traffic between the browser and a website called `http2only.com`. It works fine in any modern browser but as soon as you want to intercept the traffic using Burp, OWASP Zap or Fiddler, the connection cannot be established.
+Let's say you want to inspect traffic between the browser and a website called `http2only.com`. It works fine in any modern browser but as soon as you want to intercept the traffic using OWASP Zap or Fiddler, the connection cannot be established.
 
-So it's 2020 and HTTP/2 is on Burp's roadmap but still, you need to play with `http2only.com` right now, with all of your favorite attack & fuzzing tools.
+Update 2020-07-03: Burp Suite has experimental support for HTTP/2 in [version 2020.6](https://portswigger.net/burp/releases/professional-community-2020-6), give it a try!
 
 ## nghttpx
 
